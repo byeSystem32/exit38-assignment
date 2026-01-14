@@ -17,4 +17,15 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    sourcemap: false, // Disable source maps to avoid 404 errors on GitHub Pages
+    rollupOptions: {
+      output: {
+        // Ensure all assets use the correct base path
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
+  },
 })
